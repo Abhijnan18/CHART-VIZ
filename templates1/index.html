@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Pie Chart</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h2>Attendance Categories</h2>
+        <!-- Create a container div with a fixed width of 500px -->
+        <div style="width: 500px; margin: 0 auto;">
+            <!-- Create a canvas element to render the pie chart -->
+            <canvas id="attendanceChart" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Sample data (replace with your actual data)
+        const attendanceData = [50, 30, 20]; // Example: [number_of_students_below_75, number_of_students_75_85, number_of_students_above_85]
+        const labels = ['<75%', '75-85%', '>85%'];
+
+        // Get the canvas element and getContext for drawing
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+
+        // Create a pie chart using Chart.js
+        const attendanceChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: attendanceData,
+                    backgroundColor: ['#FF5733', '#33FF57', '#5733FF'], // Example colors
+                }],
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Pie Chart for Attendance Categories',
+                },
+            },
+        });
+    </script>
+</body>
+</html>
